@@ -92,6 +92,9 @@ class DigitClassifierFlow(FlowSpec):
 
     scores = []        # populate with scores from each hparams
     best_index = None  # replace with best index
+
+    scores = [input.callback.best_model_score for input in inputs]        # populate with scores from each hparams
+    best_index = int(np.argmin(scores))
     
     # ================================
     # FILL ME OUT

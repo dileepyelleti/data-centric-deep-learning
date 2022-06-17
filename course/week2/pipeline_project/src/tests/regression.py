@@ -101,6 +101,10 @@ def build_regression_test(system, loader):
     #   List of integers - 1 if the model got that element correct 
     #                    - 0 if the model got that element incorrect
     # ================================
+
+    batch_is_correct = (preds == labels).float().numpy().tolist()
+    batch_loss = F.cross_entropy(logits, labels, reduction='none').numpy().tolist()
+
     losses.extend(batch_loss)
     is_correct.extend(batch_is_correct)
 
